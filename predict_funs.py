@@ -114,7 +114,7 @@ def torch_percentile(tensor, percentile):
     k = 1 + round(.01 * float(percentile) * (tensor.numel() - 1))
     return tensor.reshape(-1).kthvalue(k).values.item()
 
-def pred_attention(image,vnet,slice_id):
+def pred_attention(image,vnet,slice_id,device):
     class Normalize3D:
         """Normalize a tensor to a specified mean and standard deviation."""
         def __init__(self, mean, std):
@@ -150,7 +150,7 @@ def pred_attention(image,vnet,slice_id):
     image = resize(image)
     image_tensor = image.data
     image_tensor = torch.unsqueeze(image_tensor,0)
-    image_tensor = norm_transform(image_tensor).float()
+    image_tensor = norm_transform(image_tensor).float().to(device)
     with torch.set_grad_enabled(False):
         pred_mask = vnet(image_tensor)
     pred_mask = torch.sigmoid(pred_mask)
@@ -163,7 +163,7 @@ def pred_attention(image,vnet,slice_id):
     return prob_rescale(view_attention_2d(np.squeeze(pred_mask[:,:,:,:,slice_min:slice_max])))
     
         
-def evaluate_1_volume_withattention(image_vol,model,slice_id=None,target_spacing=None,atten_map=None):
+def evaluate_1_volume_withattention(image_vol,model,device,slice_id=None,target_spacing=None,atten_map=None):
     image_vol.data = image_vol.data / (image_vol.data.max()*1.0)
     voxel_spacing = image_vol.spacing
     if target_spacing and (voxel_spacing != target_spacing):
@@ -189,7 +189,7 @@ def evaluate_1_volume_withattention(image_vol,model,slice_id=None,target_spacing
     img = min_max_normalize(img)
     if img.mean()<0.1:
         img = monai.transforms.AdjustContrast(gamma=0.8)(img)
-    imgs = torch.unsqueeze(transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])(img),0)
+    imgs = torch.unsqueeze(transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])(img),0).to(device)
 
     with torch.no_grad():
         img_emb= model.image_encoder(imgs)
