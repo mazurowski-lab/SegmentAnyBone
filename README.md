@@ -3,7 +3,7 @@
 [![arXiv Paper](https://img.shields.io/badge/arXiv-2304.10517-orange.svg?style=flat)](https://arxiv.org/abs/2401.12974)
 
 
-SegmentAnyBone is a foundational model based bone segmentation algorithm adapted from [Segment Anything Model (SAM)](https://pages.github.com/](https://github.com/facebookresearch/segment-anything)https://github.com/facebookresearch/segment-anything) for MRI scans. It is able to segment bones in the following **17 body parts**:
+[SegmentAnyBone](https://arxiv.org/abs/2401.12974) is a foundational model based bone segmentation algorithm adapted from [Segment Anything Model (SAM)](https://pages.github.com/](https://github.com/facebookresearch/segment-anything)https://github.com/facebookresearch/segment-anything) for MRI scans. It is able to segment bones in the following **17 body parts**:
 
 **`Humerus`**  |  **`Thoracic Spine`**   |  **`Lumbar Spine`**   | **`Forearm`** | **`Pelvis`** |  **`Hand`** |  **`Lower Leg`** 
 
@@ -17,13 +17,19 @@ SegmentAnyBone is a foundational model based bone segmentation algorithm adapted
 
 ## Installation & Usage
 
-You can clone the repository and install required packages by running following commands:
+You can clone the repository and install required Python packages by running following commands:
 ```
 git clone https://github.com/mazurowski-lab/SegmentAnyBone.git
 cd SegmentAnybone; pip install -r requirements.txt
 ```
 
-After cloning the repository, you should put your 3D MRI volume in `/images`, and your ground truth mask in `/masks` folder if you want to evaluate the segmentation performance of SegmentAnyBone. If you need to segment 3D volume instead of 1 slice you can see the 3D segmentation mask under `/predicted_masks` after you run **_predictAndEvaluateVolume()_** function. [This notebook](demo.ipynb)  will guide you to use SegmentAnyBone in a slice-based and volume-based manner thanks to following **predictSlice()_**, **evaluateSlicePrediction()_**, and **_predictAndEvaluateVolume()_** functions: 
+### Model Checkpoints
+
+You can download required model checkpoints from following links:
+[**`Mobile SAM`**](https://github.com/ChaoningZhang/MobileSAM/tree/master/weights)
+[**`SegmentAnyBone`**](https://drive.google.com/drive/folders/1PGKXlhj8b-fFEkYVw-Cmpj8qLSrJmTEO?usp=sharing)
+
+After cloning the repository and downloading the checkpoints, you should put your 3D MRI volume in `/images`, and your ground truth mask in `/masks` folder if you want to evaluate the segmentation performance of SegmentAnyBone. If you need to segment 3D volume instead of 1 slice you can see the 3D segmentation mask under `/predicted_masks` after you run **_predictAndEvaluateVolume()_** function. [This notebook](demo.ipynb)  will guide you to use SegmentAnyBone in a slice-based and volume-based manner thanks to following **predictSlice()_**, **evaluateSlicePrediction()_**, and **_predictAndEvaluateVolume()_** functions: 
 
 ```python
 ori_img, predictedSliceMask, atten_map = predictSlice(
