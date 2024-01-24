@@ -38,7 +38,6 @@ ori_img, predictedSliceMask, atten_map = predictSlice(
     upper_percentile = 99,
     slice_id = 18, # slice number
     attention_enabled = True, # if you want to use the depth attention
-    post_processing_enabled = False
 )
 
 msk_gt, dsc_gt = evaluateSlicePrediction(
