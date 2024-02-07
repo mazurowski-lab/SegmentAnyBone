@@ -1,9 +1,11 @@
 # SegmentAnyBone: A Universal Model that Segments Any Bone at Any Location on MRI
 
-[![arXiv Paper](https://img.shields.io/badge/arXiv-2304.10517-orange.svg?style=flat)](https://arxiv.org/abs/2401.12974)
+[![arXiv Paper](https://img.shields.io/badge/arXiv-2401.12974-orange.svg?style=flat)](https://arxiv.org/abs/2401.12974)
 
 
 [SegmentAnyBone](https://arxiv.org/abs/2401.12974) is a foundational model based bone segmentation algorithm adapted from [Segment Anything Model (SAM)](https://pages.github.com/](https://github.com/facebookresearch/segment-anything)https://github.com/facebookresearch/segment-anything) for MRI scans. It is able to segment bones in the following **17 body parts**:
+
+**Warning:** Please note that this software is developed for research purposes and is not intended for clinical use yet. Users should exercise caution and are advised against employing it immediately in clinical or medical settings.
 
 **`Humerus`**  |  **`Thoracic Spine`**   |  **`Lumbar Spine`**   | **`Forearm`** | **`Pelvis`** |  **`Hand`** |  **`Lower Leg`** 
 
