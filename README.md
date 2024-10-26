@@ -25,6 +25,10 @@ git clone https://github.com/mazurowski-lab/SegmentAnyBone.git
 cd SegmentAnybone; pip install -r requirements.txt
 ```
 
+## Sample Output
+
+![Screenshot](sample_output.png)
+
 ### Model Checkpoints
 
 You can download required model checkpoints from following links:
@@ -35,30 +39,30 @@ After cloning the repository and downloading the checkpoints to the project fold
 
 ```python
 ori_img, predictedSliceMask, atten_map = predictSlice(
-    image_name = '5.nii.gz', 
+    image_name = '2.nii.gz', 
     lower_percentile = 1,
     upper_percentile = 99,
-    slice_id = 18, # slice number
+    slice_id = 50, # slice number
     attention_enabled = True, # if you want to use the depth attention
 )
 
 msk_gt, dsc_gt = evaluateSlicePrediction(
     mask_pred = predictedSliceMask, 
-    mask_name = '5.nrrd', 
-    slice_id = 18
+    mask_name = '2.nrrd', 
+    slice_id = 50
 )
 ```
 
 ```python
 mask = predictVolume(
-    image_name = '5.nii.gz', 
+    image_name = '2.nii.gz', 
     lower_percentile = 1, 
     upper_percentile = 99
 )
 
 predictAndEvaluateVolume(
-    image_name = '5.nii.gz', 
-    mask_name = '5.nrrd',
+    image_name = '2.nii.gz', 
+    mask_name = '2.nrrd',
     lower_percentile = 1, 
     upper_percentile = 99
 )
