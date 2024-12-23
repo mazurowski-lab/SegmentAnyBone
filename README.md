@@ -3,7 +3,7 @@
 [![arXiv Paper](https://img.shields.io/badge/arXiv-2401.12974-orange.svg?style=flat)](https://arxiv.org/abs/2401.12974)
 
 
-[SegmentAnyBone](https://arxiv.org/abs/2401.12974) is a foundational model based bone segmentation algorithm adapted from [Segment Anything Model (SAM)](https://pages.github.com/](https://github.com/facebookresearch/segment-anything)https://github.com/facebookresearch/segment-anything) for MRI scans. It is able to segment bones in the following **17 body parts**:
+[SegmentAnyBone](https://arxiv.org/abs/2401.12974) is a foundational model-based bone segmentation algorithm adapted from [Segment Anything Model (SAM)](https://pages.github.com/](https://github.com/facebookresearch/segment-anything)https://github.com/facebookresearch/segment-anything) for MRI scans. It can segment bones in the following **17 body parts**:
 
 **Warning:** Please note that this software is developed for research purposes and is not intended for clinical use yet. Users should exercise caution and are advised against employing it immediately in clinical or medical settings.
 
@@ -16,6 +16,13 @@
 ## Dataset
 
 ![Screenshot](dataset.png)
+
+## Updates [Dec-23-2025]: 
+We update the codes to fine-tune the SegmentAnyBone to custom datasets, and the dataset preparation guideline can be found in our other repo: ![finetume-sam](https://github.com/mazurowski-lab/finetune-SAM/tree/main).
+- you can further fine-tune SegmentAnyBone to your dataset.
+- you can further extend it into multi-class classification.
+- [todo] this version might be unstable and we are still working on different testing.
+- [todo] We will be sharing two datasets with annotations soon. 
 
 ## Installation & Usage
 
